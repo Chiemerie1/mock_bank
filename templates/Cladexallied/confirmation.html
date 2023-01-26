@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+    <head sticky top-0 z-50>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Winster Bank
+        </title>
+        <link href="{% static '/css/style.min.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/style.css' %}" rel="stylesheet"/>
+        <link href="{% static '/css/animate.css' %}" rel="stylesheet" />
+        <script src="{% static '/js/init-alpine.js' %}"></script>
+        {% comment %} <script src="{% static '/js/main.js' %}"></script> {% endcomment %}
+  
+        <style>
+           @media(max-width:1520px) {
+               .left-svg {
+                   display: none;
+               }
+           }
+   
+           /* small css for the mobile nav close */
+           #nav-mobile-btn.close span:first-child {
+               transform: rotate(45deg);
+               top: 4px;
+               position: relative;
+               background: #a0aec0;
+           }
+   
+           #nav-mobile-btn.close span:nth-child(2) {
+               transform: rotate(-45deg);
+               margin-top: 0px;
+               background: #a0aec0;
+           }
+       </style>
+  
+     <script src="{% static '/js/wow.min.js' %}"></script>
+     <script>
+        new WOW().init();
+     </script>
+		
+    </head>
+
+    <body class="">
+
+        {% for info in bank_transfer|slice:":1" %}
+        <div>
+
+            
+            <div class="px-16 py-10 md:flex md:justify-center mt-16">
+        
+                <div class="w-full max-w-xl">
+                    
+                    <div class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+
+                        
+                        <div class="text-xl font-semibold border-b border-gray-400  px-1 text-gray-900 text-center pb-4">
+                            Confirmation 
+                        </div>
+
+                        <div class="text-lg font-semibold border-b border-gray-400  px-1 text-gray-900 text-center pb-4 pt-16">
+
+                            <img src="{% static '/img/approved.png' %}" class="object-scale-down h-48 w-64 m-auto">
+
+                            <div class="text-gray-900 text-2xl font-bold">
+                                Transfer Successful!
+                            </div>
+                        </div>
+
+                        <div class="text-xl border-b font-semibold border-gray-400  px-1 text-gray-900 text-center pb-4 pt-10">
+
+                            You have Successful sent {{info.transfer_amount}} USD to {{info.transfer_account_number}} via bank transfer
+                            
+                        </div>
+
+                        <div class="text-xl font-semibold border-b border-gray-400  px-1 text-gray-900 text-center pb-4 pt-10">
+                            
+                            Confirmation no: #{{info.ref_no}}
+                            
+                        </div>
+                        
+                        <div class="text-sm font-semibold border-b border-gray-400 text-gray-900 text-center pb-4 pt-10 ">
+                            
+                            Times may vary, but we estimate that the acc no: {{ info.transfer_account_number }} will recieve the money in 3-4 working days
+                            
+                        </div>
+
+                        
+
+                        <div class="flex items-center p-8">
+                            <a href="/console"
+                              class="block w-full px-6 py-4 mt-3 text-lg font-semibold text-center text-white bg-blue-400 rounded shadow-sm hover:bg-blue-900">
+                              OK
+                            </a>
+                      </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+
+    </body>
+	
+
+
+
+
+<script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+       menu.classList.toggle("hidden");
+    });
+ </script>
+
+     <!-- a little JS for the mobile nav button -->
+ <script>
+    if (document.getElementById('nav-mobile-btn')) {
+          document.getElementById('nav-mobile-btn').addEventListener('click', function () {
+             if (this.classList.contains('close')) {
+                document.getElementById('nav').classList.add('hidden');
+                this.classList.remove('close');
+             } else {
+                document.getElementById('nav').classList.remove('hidden');
+                this.classList.add('close');
+             }
+          });
+    }
+ </script>
+
+</html>

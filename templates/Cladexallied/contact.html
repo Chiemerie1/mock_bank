@@ -1,0 +1,115 @@
+{% extends 'layout/nav.html' %}
+{% load static %}
+{% block content %}
+
+<div id="testimonials"
+class="flex items-center justify-center w-full px-8 py-10 border-t border-gray-200 md:py-16 lg:py-24 xl:py-40 xl:px-0">
+<div class="max-w-6xl mx-auto">
+    <div class="flex-col items-center ">
+        <div class="flex flex-col items-center justify-center w-full h-full max-w-2xl pr-8 mx-auto text-center">
+            <p class="my-5 text-base font-medium tracking-tight text-blue-400 uppercase">
+                Leave a message
+            </p>
+            <h3
+                class="text-2xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl lg:text-5xl xl:text-6xl">
+                Contact Us</h3>
+            <p class="my-6 text-sm font-medium text-gray-500">
+                We would love to here from you.
+            </p>
+
+        </div>
+        <div class="flex flex-col items-center justify-center max-w-2xl py-8 mx-auto xl:flex-row xl:max-w-full">
+            <div class="w-full xl:w-1/2 xl:pr-8">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }} bg-green-600 text-white text-center font-bold"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form method="POST">
+                    {% csrf_token %}
+                <blockquote
+                    class="flex flex-col-reverse  wow fadeInLeft items-center justify-between w-full col-span-2 p-6 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease" data-wow-delay=".5s">
+                    <div class="flex flex-col pr-8">
+                        <div class="relative pl-2">
+                            <div class="mb-4 wow fadeInLeft">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">
+                                    First name
+                                </label>
+                                <input name="name"
+                                class="shadow bg-gray-200 appearance-none border border-blue-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text">
+                            </div>
+                        </div>
+                        <div class="relative pl-2">
+                            <div class="mb-4 wow fadeInLeft">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">
+                                    Phone number
+                                </label>
+                                <input name="phone_number"
+                                class="shadow bg-gray-200 appearance-none border border-blue-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text">
+                            </div>
+                        </div>
+
+                        <div class="relative pl-2">
+                            <div class="mb-4 wow fadeInLeft">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">
+                                    Email
+                                </label>
+                                <input name="email"
+                                class="shadow bg-gray-200 appearance-none border border-blue-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+                            </div>
+                        </div>                        
+
+                        <div class="relative pl-2">
+                            <div class="mb-4 wow fadeInLeft">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">
+                                    Message
+                                </label>
+                                <textarea name="msg" rows="5" cols="60"
+                                class="shadow h-32 bg-gray-200 appearance-none border border-blue-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text">
+                            </textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="bg-blue-400 hover:bg-transparent hover:text-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            Send
+                        </button>
+                        <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
+                    </div>
+
+                </blockquote>
+                </form>
+                <div class="pt-5">
+                    <a href="mailto:Cladexalliedbank@email.com" class="w-full text-center bg-blue-400 hover:bg-transparent hover:text-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                        or email us
+                    </a>
+                </div>
+
+                <blockquote
+                    class="flex flex-col-reverse items-center justify-between w-full col-span-1 p-6 mt-16 mb-16 text-center transition-all duration-200 bg-gray-100 rounded-lg md:flex-row md:text-left hover:bg-white hover:shadow ease xl:mb-0">
+                    <div class="flex flex-col pr-10">
+                        <div class="relative p-2">
+                            <p class="mt-2 text-sm text-gray-600">
+                                Feel free to ask us questions.
+                                We have tailored Investment plans for you.
+                            </p>
+                        </div>
+                        <h3 class="pl-2 mt-3 text-sm leading-5 text-gray-800 truncate">
+                            Randy Pelgry  <span class="mt-1 text-sm leading-5 text-gray-500 truncate">- Executive Vice President,
+                                Cladexallied Bank</span></h3>
+                        <p class="mt-1 text-sm leading-5 text-gray-500 truncate"></p>
+                    </div>
+                </blockquote>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</div>
+<!-- End Testimonials-->
+
+{% endblock %}

@@ -1,0 +1,64 @@
+<html lang="en">
+{% load static %}
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Winster Bank | verification
+        </title>
+        <link href="{% static '/css/style.min.css' %}" rel="stylesheet">
+        <link href="{% static '/css/style.css' %}" rel="stylesheet">
+    </head>
+
+{% block content %}
+
+<body class="">
+  <div>
+
+  <P class="text-center text-lg bg-blue-400 text-white py-5 my-5">
+    Secure Pass
+  </P>
+  
+
+    <div class="px-16 py-10 md:flex md:justify-center mt-16">
+  
+        <div class="w-full max-w-xl">
+          
+            <form method="POST" class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
+                {% csrf_token %}
+                <div class="text-sm px-1 text-gray-700 text-center">
+                </div>
+                <br>
+                <div class="mb-4">
+                <input name="pin"
+                    class="shadow appearance-none border border-blue-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Enter code">
+                </div>
+                <div class="md:flex items-center justify-between">
+                <button type="submit" class="bg-blue-400 w-full hover:bg-transparent hover:text-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    confirm
+                </button>
+                </div>
+            </form>
+          
+        </div>
+
+        
+      
+    </div>
+  </div>
+  <footer>
+    <P class="text-center text-sm bg-blue-400 text-white py-5 my-5">
+            
+          </P>
+  </footer>
+
+
+</body>
+
+
+
+
+{% endblock %}
+
+</html>
